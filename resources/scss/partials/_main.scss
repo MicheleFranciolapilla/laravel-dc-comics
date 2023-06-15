@@ -1,0 +1,150 @@
+main
+{
+    position: relative;
+    z-index: 999;
+    #comics_area
+    {
+        min-height: $comics_area_height;
+        background-color: $comics_bg_color;
+        #card_set
+        {
+            display: flex;
+            flex-wrap: wrap;
+            gap: $cards_gap;
+            height: calc(100%);
+            .card
+            {
+                width: calc((100% - (($cards_per_row - 1) * $cards_gap)) / $cards_per_row);
+                padding: 0.5rem;
+                border: 5px solid transparent;
+                img
+                {
+                    width: 100%;
+                    aspect-ratio: 1;
+                    margin-bottom: 0.5rem;
+                } 
+                h6
+                {
+                    color: black;
+                } 
+                &:hover
+                {
+                    border-color: blue;
+                    h6
+                    {
+                        color: blue;
+                    } 
+                }
+            }
+        }
+    }
+    #middle_section
+    {
+        height: $middle_section_height;
+        background-color: $comics_bg_color;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        align-items: center;
+        a
+        {
+            padding: 0.5rem 1rem;
+            border: 3px solid white;
+            &:hover
+            {
+                border-color: yellowgreen;
+                color: yellowgreen;
+            }
+        } 
+    }
+    #icons_menu_area
+    {
+        height: $central_menu_height;
+        background-color: $central_color;
+        #icons_menu_list
+        {
+            padding: 0 1rem;
+            height: 100%;
+            justify-content: space-between;
+            li
+            {
+                height: 100%;
+                a
+                {
+                    height: 100%;
+                    align-items: center;
+                    gap: 1rem;
+                    img
+                    {
+                        height: 75%;
+                        &.special
+                        {
+                            height: 50%;
+                        }
+                    } 
+                }
+                &:hover
+                {
+                    a
+                    {
+                        img
+                        {
+                            filter: invert(73%) sepia(34%) saturate(826%) hue-rotate(35deg) brightness(95%) contrast(93%);
+                        } 
+                        span
+                        {
+                            // color: yellowgreen;
+                            filter: invert(73%) sepia(34%) saturate(826%) hue-rotate(35deg) brightness(95%) contrast(93%);
+
+                        } 
+                    } 
+                }
+
+            } 
+        }
+    }
+    #single_card_view
+    {
+        #blue_strip
+        {
+            height: calc($central_menu_height / 2);
+            background-color: $central_color;
+            position: relative;
+            #thumb
+            {
+                width: 200px;
+                border: 3px solid white;
+                position: absolute;
+                bottom: calc($central_menu_height / 10);
+                left: calc((100% - $block_width) / 2);
+                img
+                {
+                    width: 100%;
+                    aspect-ratio: 2/3;
+                } 
+            }
+        }
+        // min-height: $comics_area_height;
+        background-color: $single_card_color;
+        #single_card
+        {
+            padding: 1.5rem 0;
+            #description_block
+            {
+                p
+                {
+                    width: 85%;
+                } 
+                img
+                {
+                    width: 13%;
+                    aspect-ratio: 2/3;
+                } 
+            }
+            #artists, #writers
+            {
+                width: 45%;
+            }
+        }
+    }
+}

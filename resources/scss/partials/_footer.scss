@@ -1,0 +1,124 @@
+footer
+{
+    #upper_footer
+    {
+        height: $footer_bg_height;
+        background-image: url('../img/footer-bg.jpg');
+        background-size: cover;
+        #footer_inner_box
+        {
+            padding: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            height: 100%;
+            #footer_vertical_menu
+            {
+                padding-left: 0;
+                display: flex;
+                gap: 1.5rem;
+                flex-flow: column wrap;
+                .outer_list_item
+                {
+                    font-size: large;
+                    font-weight: 800;
+                    a
+                    {
+                        color: white;
+                        &:hover
+                        {
+                            color: yellowgreen;
+                        }
+                    }
+                    .inner_list
+                    {
+                        padding: 1rem 0;
+                        margin-left: 0;
+                        font-size: medium;
+                        font-weight: 300;
+                        a
+                        {
+                            color: lightgrey;
+                            &:hover
+                            {
+                                color: yellow;
+                            }
+                        } 
+                    }
+                }
+            }
+            img
+            {
+                position: absolute;
+                right: 0;
+                align-self: center;
+            } 
+            p
+            {
+                position: absolute;
+                font-size: small;
+                width: 50%;
+                color: lightgrey;
+                left: 0;
+                bottom: 0;
+                a
+                {
+                    color: blue;
+                    &:hover
+                    {
+                        color: yellowgreen;
+                    }
+                } 
+            } 
+        }
+    }
+    #lower_footer
+    {
+        position: relative;
+        min-height: $footer_height;
+        display: flex;
+        align-items: center;
+        background-color: $footer_color;
+        #lower_footer_list
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            li
+            {
+                font-size: medium;
+                font-weight: 800;
+                a
+                {
+                    border: 3px solid $central_color;
+                    color: white;
+                    padding: 0.5rem;
+                    &:hover
+                    {
+                        color: yellowgreen;
+                    }
+                }
+                span
+                {
+                    color: $central_color;
+                }
+                #social_menu
+                {
+                    display: inline-flex;
+                    align-items: center;
+                    li
+                    {
+                        a
+                        {
+                            border-color: transparent;
+                            &:hover
+                            {
+                                filter: brightness(10);
+                            }
+                        } 
+                    } 
+                }
+            }
+        }
+    }
+}

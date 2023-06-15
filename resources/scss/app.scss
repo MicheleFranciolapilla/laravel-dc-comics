@@ -1,1 +1,23 @@
 @import '~bootstrap/scss/bootstrap';
+@import './partials/_variables';
+@import './partials/_header';
+@import './partials/_header';
+@import './partials/_main';
+@import './partials/_footer';
+
+ul
+{
+    list-style: none;
+}
+
+a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.central
+{
+    width: $block_width;
+    margin: 0 auto;
+}

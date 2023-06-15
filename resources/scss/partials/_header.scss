@@ -1,0 +1,53 @@
+@import './_variables';
+
+#upper_header
+{
+    height: $upper_header_height;
+    background-color: $central-color;
+    color: white;
+    font-size: small;
+}
+
+nav
+{
+    height: $nav_height;
+    img
+    {
+        height: 80%;
+        align-self: center;
+    }
+    #nav_menu
+    {
+        flex-grow: 1;
+        height: 100%;
+        li
+        {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            border-bottom: $menu_border_thickness solid transparent;
+            font-size: large;
+            line-height: $nav_height;
+            a
+            {
+                color: $comics_bg_color;
+                font-weight: 600;
+            }
+            &.active
+            {
+                border-color: blue;
+                a
+                {
+                    color: blue;
+                } 
+            }
+        } 
+    }
+}
+
+#jumbotron
+{
+    height: $jumbotron_height;
+    background-image: url('../img/jumbotron.jpg');
+    background-size: 100%;
+}
