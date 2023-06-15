@@ -11,30 +11,32 @@ return new class extends Migration
      *
      * @return void
      */
+
     public function up()
     {
-        Schema::create('comics_table', function (Blueprint $table) {
+        Schema::create('comics_table', function (Blueprint $table) 
+        {
             $table->id();
-            $table->string('title',30);
+            $table->string('title',100);
             $table->text('description')->nullable();
-            $table->string('thumb_url');
-            $table->decimal('price',4,2);
-            $table->string('series',30)->nullable();
+            $table->text('thumb_url');
+            $table->string('price',7);
+            $table->string('series',50)->nullable();
             $table->date('sale_date');
-            $table->string('type',20);
+            $table->string('type',50);
             $table->string('artists');
             $table->string('writers');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+ 
+     /**
+      * Reverse the migrations.
+      *
+      * @return void
+      */
     public function down()
     {
-        Schema::dropIfExists('_comics_table_migration');
+        Schema::dropIfExists('comics_table');
     }
 };
