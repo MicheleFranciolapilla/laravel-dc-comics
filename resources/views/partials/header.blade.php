@@ -1,7 +1,7 @@
+@php
+    $header_menus = config('Project_data.menus_and_titles.menus.standard.header');
+@endphp 
 <header>
-    @php
-        $header_menus = config('Project_data.menus_and_titles.menus.standard.header');
-    @endphp 
     <div id="upper_header">
         <ul class="central d-flex justify-content-end column-gap-4">
             @foreach($header_menus['upper_header'] as $menu_item)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,15 +7,16 @@
 
     <title>@yield('page_title')</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
     <!-- Styles -->
     @vite('resources/js/app.js')
 </head>
 
 <body>
-    @include('partials.header');
-    @include('partials.footer');
+    @include('partials.header')
+    <main>
+        @yield('main_section')
+        @yield('icons_menu_content')
+    </main>
+    @include('partials.footer')
 </body>
 </html>

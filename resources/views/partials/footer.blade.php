@@ -1,7 +1,7 @@
+@php
+    $footer_menus = config('Project_data.menus_and_titles.menus.standard.footer');
+@endphp
 <footer>
-    @php
-        $footer_menus = config('Project_data.menus_and_titles.menus.standard.footer');
-    @endphp
     <div id="upper_footer">
         <div id="footer_inner_box" class="central">
             <ul id="footer_vertical_menu">

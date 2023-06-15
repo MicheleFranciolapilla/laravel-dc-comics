@@ -11,6 +11,11 @@ class ComicsController extends Controller
     public  function index()
     {
         $comics_db = ComicsModel::All();
-        return view('pages.index', compact('comics_db'));
+        return view('pages.collection', compact('comics_db'));
+    }
+
+    public  function show($id)
+    {
+
     }
 }
