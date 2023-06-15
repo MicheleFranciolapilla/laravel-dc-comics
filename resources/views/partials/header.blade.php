@@ -25,4 +25,6 @@
             @endforeach
         </ul>
     </nav>
+    <div id="jumbotron">
+    </div>
 </header>
