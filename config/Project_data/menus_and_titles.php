@@ -3,7 +3,7 @@
                 "titles"        =>  [
                                         "main"          =>  "DC COMICS | Home",
                                         "collection"    =>  "DC COMICS | Collection",
-                                        "data"          =>  "DC COMICS | Comics Data"
+                                        "show"          =>  "DC COMICS | "
                                     ],
                 "menus"         =>  [
                                         "standard"      =>  [

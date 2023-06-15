@@ -133,11 +133,11 @@ main
             {
                 p
                 {
-                    width: 85%;
+                    min-width: 85%;
                 } 
                 img
                 {
-                    width: 13%;
+                    max-width: 13%;
                     aspect-ratio: 2/3;
                 } 
             }
