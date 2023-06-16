@@ -5,7 +5,8 @@
 @endsection
 
 @section('main_section')
-    <div class="create_edit_box p-5">
+    <a id="jumping_anchor" href="#form_section_start" class="d-none"></a>
+    <div id="form_section_start" class="create_edit_box p-5">
         <h2 class="text-info text-center mb-3">Create a new comic</h2>
         <form action="{{ route('comics.store') }}" method="POST" class="border border-5 border-info bg-light">
             @csrf
@@ -39,7 +40,7 @@
             <div class="d-flex">
                 <div class="form-group p-3 my-1">
                     <label for="date_input" class="form-label text-primary fs-5">Sale Date (REQUIRED):</label>
-                    <input id="date_input" type="date" class="form-control" name="date" required>
+                    <input id="date_input" type="date" class="form-control" name="sale_date" required>
                 </div>
                 <div class="form-group p-3 my-1">
                     <label for="price_input" class="form-label text-primary fs-5">Price ($) (REQUIRED):</label>
@@ -56,3 +57,10 @@
         </div>
     </div>
 @endsection
+
+<script>
+     window.addEventListener('DOMContentLoaded', function() {
+        let direct_jump = document.getElementById('jumping_anchor');
+        direct_jump.click();
+    });
+</script>

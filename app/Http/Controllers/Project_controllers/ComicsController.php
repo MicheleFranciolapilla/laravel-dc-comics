@@ -27,6 +27,12 @@ class ComicsController extends Controller
 
     public  function store(Request $request)
     {
-        
+        $form_data = $request->all();
+        // $mid = date('Y-m-d', strtotime($form_data['sale_date']));
+        // $form_data['sale_date'] = $mid;
+        $new_record = new ComicsModel();
+        $new_record->fill($form_data);
+        $new_record->save();
+        return redirect()->route('comics.index');
     }
 }
