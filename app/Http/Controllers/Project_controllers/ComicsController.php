@@ -8,6 +8,15 @@ use App\Models\Project_models\ComicsModel as ComicsModel;
 
 class ComicsController extends Controller
 {
+    private function check_and_set_img_url(string $url) : string
+    {
+        $no_img_url = "https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";
+        if (filter_var($url, FILTER_VALIDATE_URL))
+            if (@getimagesize($url))
+                return $url;
+        return $no_img_url;
+    }
+
     public  function index()
     {
         $comics_db = ComicsModel::All();
@@ -28,6 +37,7 @@ class ComicsController extends Controller
     public  function store(Request $request)
     {
         $form_data = $request->all();
+        $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
         // $mid = date('Y-m-d', strtotime($form_data['sale_date']));
         // $form_data['sale_date'] = $mid;
         $new_record = new ComicsModel();
