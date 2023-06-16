@@ -19,6 +19,7 @@
     </div>
     <div id="middle_section">
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
+        <a href="{{ route('comics.create') }}"> Add more</a>
     </div>
 @endsection
 

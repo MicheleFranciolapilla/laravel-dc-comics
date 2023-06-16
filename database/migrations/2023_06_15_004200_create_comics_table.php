@@ -19,13 +19,13 @@ return new class extends Migration
             $table->id();
             $table->string('title',100);
             $table->text('description')->nullable();
-            $table->text('thumb_url');
-            $table->string('price',7);
+            $table->text('thumb_url')->nullable();
+            $table->decimal('price',5,2);
             $table->string('series',50)->nullable();
             $table->date('sale_date');
             $table->string('type',50);
-            $table->string('artists');
-            $table->string('writers');
+            // $table->string('artists');
+            // $table->string('writers');
             $table->timestamps();
         });
     }

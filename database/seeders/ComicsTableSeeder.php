@@ -26,8 +26,8 @@ class ComicsTableSeeder extends Seeder
             $new_record->series = $comics_record['series'];
             $new_record->sale_date = $comics_record['sale_date'];
             $new_record->type = $comics_record['type'];
-            $new_record->artists = implode("///", $comics_record['artists']);
-            $new_record->writers = implode("///", $comics_record['writers']);
+            // $new_record->artists = implode("///", $comics_record['artists']);
+            // $new_record->writers = implode("///", $comics_record['writers']);
             $new_record->save();
         }
     }

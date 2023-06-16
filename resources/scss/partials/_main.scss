@@ -147,4 +147,25 @@ main
             }
         }
     }
+    .create_edit_box
+    {
+        background-color: $footer_color;
+        .thumb_area
+        {
+            img
+            {
+                width: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+            } 
+        }  
+        .form_buttons
+        {
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }      
+    }
+
 }

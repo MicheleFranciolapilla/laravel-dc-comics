@@ -19,4 +19,14 @@ class ComicsController extends Controller
         $single_item = ComicsModel::findOrFail($id);
         return view('pages.crud_show', compact('single_item'));
     }
+
+    public  function create()
+    {
+        return view('pages.crud_create');
+    } 
+
+    public  function store(Request $request)
+    {
+        
+    }
 }
