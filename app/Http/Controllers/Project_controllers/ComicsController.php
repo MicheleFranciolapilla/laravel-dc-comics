@@ -38,8 +38,6 @@ class ComicsController extends Controller
     {
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
-        // $mid = date('Y-m-d', strtotime($form_data['sale_date']));
-        // $form_data['sale_date'] = $mid;
         $new_record = new ComicsModel();
         $new_record->fill($form_data);
         $new_record->save();
@@ -48,7 +46,6 @@ class ComicsController extends Controller
 
     public  function edit(ComicsModel $comic)
     {
-        // $single_item = ComicsModel::findOrFail($id);
         return view('pages.crud_edit', compact('comic'));
     }
 
@@ -56,8 +53,14 @@ class ComicsController extends Controller
     {
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
-        // dd($single_item);
         $comic->update($form_data);
+        return redirect()->route('comics.index');
+    }
+
+    public  function destroy(ComicsModel $comic)
+    {
+        // dd($comic);
+        $comic->delete();
         return redirect()->route('comics.index');
     }
 }

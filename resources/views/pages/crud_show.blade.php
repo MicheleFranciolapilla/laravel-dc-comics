@@ -41,5 +41,6 @@
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.index') }}"> Go back to COLLECTION</a>
         <a href="{{ route('comics.edit', ['comic' => $single_item]) }}"> Modify</a>
+        <a href="{{ route('comics.edit', ['comic' => $single_item]) }}" class="delete"> Delete</a>
     </div>
 @endsection

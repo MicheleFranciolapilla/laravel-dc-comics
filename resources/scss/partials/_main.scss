@@ -55,7 +55,8 @@ main
                 border-color: yellowgreen;
                 color: yellowgreen;
             }
-            &#delete_all
+            &#delete_all,
+            &.delete
             {
                 border: 5px solid orangered;
                 color: yellow;
