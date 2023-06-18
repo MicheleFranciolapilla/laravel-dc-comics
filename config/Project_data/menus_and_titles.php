@@ -4,7 +4,8 @@
                                         "main"          =>  "DC COMICS | Home",
                                         "collection"    =>  "DC COMICS | Collection",
                                         "show"          =>  "DC COMICS | ",
-                                        "create"        =>  "DC COMICS | Create New"
+                                        "create"        =>  "DC COMICS | Create New",
+                                        "edit"          =>  "DC COMICS | Modify - "
                                     ],
                 "menus"         =>  [
                                         "standard"      =>  [

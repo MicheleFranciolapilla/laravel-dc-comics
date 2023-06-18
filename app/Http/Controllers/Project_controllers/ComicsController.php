@@ -8,7 +8,7 @@ use App\Models\Project_models\ComicsModel as ComicsModel;
 
 class ComicsController extends Controller
 {
-    private function check_and_set_img_url(string $url) : string
+    private function check_and_set_img_url($url) : string
     {
         $no_img_url = "https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";
         if (filter_var($url, FILTER_VALIDATE_URL))
@@ -43,6 +43,21 @@ class ComicsController extends Controller
         $new_record = new ComicsModel();
         $new_record->fill($form_data);
         $new_record->save();
+        return redirect()->route('comics.index');
+    }
+
+    public  function edit(ComicsModel $comic)
+    {
+        // $single_item = ComicsModel::findOrFail($id);
+        return view('pages.crud_edit', compact('comic'));
+    }
+
+    public  function update(Request $request, ComicsModel $comic)
+    {
+        $form_data = $request->all();
+        $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
+        // dd($single_item);
+        $comic->update($form_data);
         return redirect()->route('comics.index');
     }
 }

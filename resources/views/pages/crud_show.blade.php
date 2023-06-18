@@ -40,6 +40,6 @@
     <div id="middle_section">
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.index') }}"> Go back to COLLECTION</a>
-        <a href="{{ route('comics.index') }}"> Modify</a>
+        <a href="{{ route('comics.edit', ['comic' => $single_item]) }}"> Modify</a>
     </div>
 @endsection

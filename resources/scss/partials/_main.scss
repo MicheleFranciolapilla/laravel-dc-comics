@@ -55,6 +55,16 @@ main
                 border-color: yellowgreen;
                 color: yellowgreen;
             }
+            &#delete_all
+            {
+                border: 5px solid orangered;
+                color: yellow;
+                &:hover
+                {
+                    border: 5px solid red;
+                    color: orangered;
+                }
+            }
         } 
     }
     #icons_menu_area

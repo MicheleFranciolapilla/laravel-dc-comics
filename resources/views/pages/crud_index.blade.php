@@ -9,9 +9,13 @@
         <div id="card_set" class="central py-4">
             @foreach($comics_db as $item)
                 <div class="card">
-                    <a href="{{ route('comics.show', [$id = $item->id])}}">
+                    <a href="{{ route('comics.show', [$id = $item->id])}}" class="d-flex flex-column w-100 h-100">
                         <img src="{{ $item['thumb_url'] }}" alt="{{ $item['title'] }}">
                         <h6>{{ $item['title'] }}</h6>
+                        <div class="card_buttons_box align-self-end w-100 d-flex flex-column row-gap-1">
+                            <a href="{{ route('comics.edit', ['comic' => $item]) }}" type="button" class="btn btn-primary">Modify</a>
+                            <a href="{{ route('comics.edit', ['comic' => $item]) }}" type="button" class="btn btn-danger">Delete</a>
+                        </div>
                     </a>
                 </div>
             @endforeach
@@ -20,6 +24,7 @@
     <div id="middle_section">
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.create') }}"> Add more</a>
+        <a id="delete_all" href="{{ route('comics.create') }}"> DELETE ALL</a>
     </div>
 @endsection
 
