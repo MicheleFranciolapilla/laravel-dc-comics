@@ -15,7 +15,9 @@
                 <label for="title_input" class="form-label text-primary fs-5">Title (REQUIRED):</label>
                 <input id="title_input" class="form-control @error('title') is-invalid @enderror" type="text" name="title" maxlength="100" required value="{{ old('title') ?? $comic->title }}">
                 @error('title')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger">
+                        {{ $message }}
+                    </div>
                 @enderror
             </div>
             <div class="form-group p-3 my-1">
@@ -34,11 +36,21 @@
                     </div>
                     <div class="form-group w-100 p-3 my-1">
                         <label for="series_input" class="form-label text-primary fs-5">Series:</label>
-                        <input id="serie_input" type="text" class="form-control" name="series" maxlength="50" placeholder="Enter the series, if you want..." value="{{ old('series') ?? $comic->series }}">
+                        <input id="serie_input" type="text" class="form-control @error('series') is-invalid @enderror" name="series" maxlength="50" placeholder="Enter the series, if you want..." value="{{ old('series') ?? $comic->series }}">
+                        @error('series')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="form-group w-100 p-3 my-1">
                         <label for="type_input" class="form-label text-primary fs-5">Type (REQUIRED):</label>
-                        <input id="type_input" type="text" class="form-control" name="type" maxlength="50" required value="{{ old('type') ?? $comic->type }}">
+                        <input id="type_input" type="text" class="form-control @error('type') is-invalid @enderror" name="type" maxlength="50" required value="{{ old('type') ?? $comic->type }}">
+                        @error('type')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 {{-- <div class="d-none thumb_area align-self-start border border-3 border-dark mx-3 w-25">
@@ -48,11 +60,21 @@
             <div class="d-flex">
                 <div class="form-group p-3 my-1">
                     <label for="date_input" class="form-label text-primary fs-5">Sale Date (REQUIRED):</label>
-                    <input id="date_input" type="date" class="form-control" name="sale_date" required value="{{ old('sale_date') ?? $comic->sale_date }}">
+                    <input id="date_input" type="date" class="form-control @error('sale_date') is-invalid @enderror" name="sale_date" required value="{{ old('sale_date') ?? $comic->sale_date }}">
+                    @error('sale_date')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group p-3 my-1">
                     <label for="price_input" class="form-label text-primary fs-5">Price ($) (REQUIRED):</label>
-                    <input id="price_input" type="number" class="form-control" name="price" min="0.1" max="99.99" step="0.11" required value="{{ old('price') ?? $comic->price }}">
+                    <input id="price_input" type="number" class="form-control @error('price') is-invalid @enderror" name="price" min="0.10" max="99.99" step="0.01" required value="{{ old('price') ?? $comic->price }}">
+                    @error('price')
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="form_buttons">
