@@ -5,9 +5,13 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Project_models\ComicsModel as ComicsModel;
+use title_trait;
+
+require_once __DIR__ . '/../../resources/traits/trait_for_title.php';
 
 class ComicsTableSeeder extends Seeder
 {
+    use     title_trait;
     /**
      * Run the database seeds.
      *
@@ -19,7 +23,7 @@ class ComicsTableSeeder extends Seeder
         foreach($comics_db as $comics_record)
         {
             $new_record = new ComicsModel();
-            $new_record->title = $comics_record['title'];
+            $new_record->title = $this->format_title($comics_record['title']);
             $new_record->description = $comics_record['description'];
             $new_record->thumb_url = $comics_record['thumb'];
             $new_record->price = $comics_record['price'];

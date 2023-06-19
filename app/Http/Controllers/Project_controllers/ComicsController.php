@@ -80,6 +80,7 @@ class ComicsController extends Controller
 
     public  function update(Request $request, ComicsModel $comic)
     {
+        $request = $this->data_validator($request);
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
         $comic->update($form_data);
