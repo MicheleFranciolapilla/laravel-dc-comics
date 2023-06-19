@@ -21,7 +21,8 @@
                             <form id="{{ "delete_form_" . $item->id }}" class="delete_form" action="{{ route('comics.destroy', ['comic' => $item]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button id="{{ "delete_btn_" . $item->id }}" class="delete btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal">Delete</button>
+                                <button id="{{ "delete_btn_" . $item->id }}" class="delete btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal"
+                                 onclick="this.parentElement.classList.add('to_be_deleted');">Delete</button>
                             </form>
                         </div>
                     </a>
@@ -56,36 +57,4 @@
             @endforeach
         </ul>
     </div>
-@endsection
-
-@section('script_section')
-        
-        function set_listener_on_deleter_btn()
-        {
-            let delete_buttons = document.querySelectorAll('*[id^="delete_btn_"]');
-            for (let i = 0; i < delete_buttons.length; i++)
-            {
-                delete_buttons[i].addEventListener('click', function()
-                {
-                    let btn_form = this.parentElement;
-                    btn_form.classList.add('to_be_deleted');
-                });
-            }
-        }
-
-        function prepare_for_delete_all()
-        {
-            let delete_forms = document.querySelectorAll('*[id^="delete_form_"]');
-            for (let i = 0; i < delete_forms.length; i++)
-            {
-                delete_forms[i].classList.add('to_be_deleted');
-            }
-            for (let i = 0; i < delete_forms.length; i++)
-            {
-                console.log(delete_forms[i]);
-            }
-        }
-
-        set_listener_on_deleter_btn();
-
 @endsection

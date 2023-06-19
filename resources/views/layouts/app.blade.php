@@ -68,8 +68,6 @@
             });
         });
 
-        @yield('script_section')
-
     </script>
 </body>
 </html>
