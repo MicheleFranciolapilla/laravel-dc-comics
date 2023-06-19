@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Project_controllers;
 
+require_once __DIR__ . '/../../../../resources/traits/trait_for_title.php';
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project_models\ComicsModel as ComicsModel;
+use Title_Trait;
 
 class ComicsController extends Controller
 {
+    use     Title_Trait;
+
     private function check_and_set_img_url($url) : string
     {
         $no_img_url = "https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg";
@@ -64,6 +69,8 @@ class ComicsController extends Controller
 
     public  function store(Request $request)
     {
+        $new_title = $this->format_title($request->input('title'));
+        $request->merge(['title' => $new_title]);
         $request = $this->data_validator($request);
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
@@ -80,6 +87,8 @@ class ComicsController extends Controller
 
     public  function update(Request $request, ComicsModel $comic)
     {
+        $new_title = $this->format_title($request->input('title'));
+        $request->merge(['title' => $new_title]);
         $request = $this->data_validator($request);
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);

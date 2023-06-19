@@ -1,6 +1,6 @@
 <?php 
 
-    trait   title_trait
+    trait   Title_Trait
     {
         private string  $original_title;
         private string  $title;

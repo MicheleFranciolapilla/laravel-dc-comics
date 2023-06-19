@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
+require_once __DIR__ . '/../../resources/traits/trait_for_title.php';
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Project_models\ComicsModel as ComicsModel;
-use title_trait;
-
-require_once __DIR__ . '/../../resources/traits/trait_for_title.php';
+use Title_Trait;
 
 class ComicsTableSeeder extends Seeder
 {
-    use     title_trait;
+    use     Title_Trait;
     /**
      * Run the database seeds.
      *
