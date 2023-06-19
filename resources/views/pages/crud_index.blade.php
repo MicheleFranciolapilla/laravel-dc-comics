@@ -35,9 +35,9 @@
     <div id="middle_section">
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.create') }}"> Add more</a>
-        @if (count($comics_db) != 0)
+        {{-- @if (count($comics_db) != 0)
             <a id="delete_all" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal" onclick="prepare_for_delete_all()"> DELETE ALL</a>
-        @endif 
+        @endif  --}}
     </div>
 @endsection
 

@@ -17,6 +17,34 @@ class ComicsController extends Controller
         return $no_img_url;
     }
 
+    private function data_validator(Request $request) : Request
+    {
+        $result = $request;
+        $result->validate(
+            [
+                'title'     =>  'required|max:100|unique:comics_table',
+                'price'     =>  'required|between:0.10,99.99|decimal:2',
+                'series'    =>  'max:50',
+                'sale_date' =>  'required|date',
+                'type'      =>  'required|max:50'
+            ],
+            [
+                'title.required'        =>  'DC COMICS needs the field ":attribute" (required)',
+                'title.max'             =>  'The text (:attribute) entered is too long (max 100 chars)',
+                'title.unique'          =>  'This :attribute already exists!',
+                'price.required'        =>  'DC COMICS needs the field ":attribute" (required)',
+                'price.between'         =>  'The :attribute entered is out of range [0.10...99.99]!',
+                'price.decimal'         =>  'The :attribute must be "decimal" (XX.XX)',
+                'series.max'            =>  'The text (:attribute) entered is too long (max 50 chars)',
+                'sale_date.required'    =>  'DC COMICS needs the field ":attribute" (required)',
+                'sale_date.date'        =>  'The :attribute must be a valid date (DD,MM,YYYY)',
+                'type.required'         =>  'DC COMICS needs the field ":attribute" (required)',
+                'type.max'              =>  'The text (:attribute) entered is too long (max 50 chars)',
+            ]
+        );
+        return $result;
+    }
+
     public  function index()
     {
         $comics_db = ComicsModel::All();
@@ -36,6 +64,7 @@ class ComicsController extends Controller
 
     public  function store(Request $request)
     {
+        $request = $this->data_validator($request);
         $form_data = $request->all();
         $form_data['thumb_url'] = $this->check_and_set_img_url($form_data['thumb_url']);
         $new_record = new ComicsModel();

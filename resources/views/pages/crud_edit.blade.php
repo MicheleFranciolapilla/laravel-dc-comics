@@ -13,7 +13,10 @@
             @method('PUT')
             <div class="form-group p-3 my-1">
                 <label for="title_input" class="form-label text-primary fs-5">Title (REQUIRED):</label>
-                <input id="title_input" class="form-control" type="text" name="title" maxlength="100" required value="{{ old('title') ?? $comic->title }}">
+                <input id="title_input" class="form-control @error('title') is-invalid @enderror" type="text" name="title" maxlength="100" required value="{{ old('title') ?? $comic->title }}">
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group p-3 my-1">
                 <label for="description_input" class="form-label text-primary fs-5">Description:</label>
@@ -49,7 +52,7 @@
                 </div>
                 <div class="form-group p-3 my-1">
                     <label for="price_input" class="form-label text-primary fs-5">Price ($) (REQUIRED):</label>
-                    <input id="price_input" type="number" class="form-control" name="price" min="0" max="99.99" step="0.11" required value="{{ old('price') ?? $comic->price }}">
+                    <input id="price_input" type="number" class="form-control" name="price" min="0.1" max="99.99" step="0.11" required value="{{ old('price') ?? $comic->price }}">
                 </div>
             </div>
             <div class="form_buttons">
