@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@php
+    $delete_all = false;
+@endphp 
+
 @section('page_title')
     {{ config('Project_data.menus_and_titles.titles.collection') }}
 @endsection
@@ -7,7 +11,7 @@
 @section('main_section')
     <div id="comics_area">
         <div id="card_set" class="central py-4">
-            @foreach($comics_db as $item)
+            @forelse($comics_db as $item)
                 <div class="card">
                     <a href="{{ route('comics.show', [$id = $item->id])}}" class="d-flex flex-column w-100 h-100">
                         <img src="{{ $item['thumb_url'] }}" alt="{{ $item['title'] }}">
@@ -17,20 +21,22 @@
                             <form id="{{ "delete_form_" . $item->id }}" class="delete_form" action="{{ route('comics.destroy', ['comic' => $item]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button id="{{ "delete_btn_" . $item->id }}" class="delete btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
-                                <button class="submitter" type="submit"></button>
+                                <button id="{{ "delete_btn_" . $item->id }}" class="delete btn btn-danger w-100" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal">Delete</button>
                             </form>
-                            {{-- <a href="{{ route('comics.edit', ['comic' => $item]) }}" type="button" class="delete btn btn-danger" onclick="delete_confirm()">Delete</a> --}}
                         </div>
                     </a>
                 </div>
-            @endforeach
+            @empty
+                <h2 class="mx-auto text-info">The Database is empty</h2>
+            @endforelse
         </div>
     </div>
     <div id="middle_section">
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.create') }}"> Add more</a>
-        <a id="delete_all" href="{{ route('comics.create') }}"> DELETE ALL</a>
+        @if (count($comics_db) != 0)
+            <a id="delete_all" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal" onclick="prepare_for_delete_all()"> DELETE ALL</a>
+        @endif 
     </div>
 @endsection
 
@@ -53,7 +59,6 @@
 @endsection
 
 @section('script_section')
-    <script>
         
         function set_listener_on_deleter_btn()
         {
@@ -68,37 +73,19 @@
             }
         }
 
-        function reset_all_forms()
+        function prepare_for_delete_all()
         {
             let delete_forms = document.querySelectorAll('*[id^="delete_form_"]');
             for (let i = 0; i < delete_forms.length; i++)
             {
-                if (delete_forms[i].classList.contains('to_be_deleted'))
-                    delete_forms[i].classList.remove('to_be_deleted');
+                delete_forms[i].classList.add('to_be_deleted');
+            }
+            for (let i = 0; i < delete_forms.length; i++)
+            {
+                console.log(delete_forms[i]);
             }
         }
 
         set_listener_on_deleter_btn();
 
-        document.addEventListener('DOMContentLoaded', function()
-        {
-            let dismisser = document.getElementById('dismiss_modal_btn');
-            dismisser.addEventListener('click', function()
-            {
-                reset_all_forms();
-            });
-
-            let deleter = document.getElementById('delete_btn');
-            deleter.addEventListener('click', function()
-            {
-                let to_be_deleted_forms = document.querySelectorAll('.to_be_deleted');
-                for (let i = 0; i < to_be_deleted_forms.length; i++)
-                {
-                    to_be_deleted_forms[i].classList.remove('to_be_deleted');
-                    to_be_deleted_forms[i].submit();
-                }
-            });
-        });
-
-    </script>
 @endsection

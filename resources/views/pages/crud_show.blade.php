@@ -41,6 +41,11 @@
         <a href="{{ route('home') }}"> Go back to HOME PAGE</a>
         <a href="{{ route('comics.index') }}"> Go back to COLLECTION</a>
         <a href="{{ route('comics.edit', ['comic' => $single_item]) }}"> Modify</a>
-        <a href="{{ route('comics.edit', ['comic' => $single_item]) }}" class="delete"> Delete</a>
+        <form id="{{ "delete_form_" . $single_item->id }}" class="delete_form" action="{{ route('comics.destroy', ['comic' => $single_item]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <a id="{{ "delete_btn_" . $single_item->id }}" class="delete" type="button" data-bs-toggle="modal" data-bs-target="#deletion_modal" 
+             onclick="this.parentElement.classList.add('to_be_deleted');"> Delete</a>
+        </form>
     </div>
 @endsection
