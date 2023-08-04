@@ -11,7 +11,8 @@ use Title_Trait;
 
 class ComicsController extends Controller
 {
-    use     Title_Trait;
+    use         Title_Trait;
+    private     $last_edited_item = ['title' => "", 'crud' => ""];
 
     private function check_and_set_img_url($url) : string
     {
@@ -22,12 +23,24 @@ class ComicsController extends Controller
         return $no_img_url;
     }
 
+    private function set_unique_rule(Request $request) : string
+    {
+        $result = "required|max:100|unique:comics_table";
+         if (($this->last_edited_item['crud'] = "edit") && ($this->last_edited_item['title'] = $request->input('title')))
+            $result = "required|max:100";
+        $this->last_edited_item = ['title' => "", 'crud' => ""];
+        return $result;
+    }
+
     private function data_validator(Request $request) : Request
     {
         $result = $request;
+        // var_dump($this->last_edited_item);
+        // echo "<br>";
+        // dd($request->input('title'));
         $result->validate(
             [
-                'title'     =>  'required|max:100|unique:comics_table',
+                'title'     =>  $this->set_unique_rule($request),
                 'price'     =>  'required|between:0.10,99.99|decimal:2',
                 'series'    =>  'max:50',
                 'sale_date' =>  'required|date',
@@ -82,11 +95,18 @@ class ComicsController extends Controller
 
     public  function edit(ComicsModel $comic)
     {
+        $this->last_edited_item['title'] = $comic['title'];
+        $this->last_edited_item['crud'] = "edit";
+        // $last = $this->last_edited_item;
+        // echo "Chiamata edit: <br>";
+        // var_dump($this->last_edited_item);
         return view('pages.crud_edit', compact('comic'));
     }
 
     public  function update(Request $request, ComicsModel $comic)
     {
+        // echo "DA UPDATE";
+        // dd($this->last_edited_item);
         $new_title = $this->format_title($request->input('title'));
         $request->merge(['title' => $new_title]);
         $request = $this->data_validator($request);
